@@ -1,0 +1,87 @@
+{
+  "rows": 7043,
+  "churn_rate_pct": 26.5,
+  "eda_churn_rates_pct": {
+    "Contract": {
+      "Two year": 2.8,
+      "One year": 11.3,
+      "Month-to-month": 42.7
+    },
+    "PaymentMethod": {
+      "Credit card (automatic)": 15.2,
+      "Bank transfer (automatic)": 16.7,
+      "Mailed check": 19.1,
+      "Electronic check": 45.3
+    },
+    "InternetService": {
+      "No": 7.4,
+      "DSL": 19.0,
+      "Fiber optic": 41.9
+    },
+    "tenure_months": {
+      "0-6": 52.9,
+      "7-12": 35.9,
+      "13-24": 28.7,
+      "25-48": 20.4,
+      "49-72": 9.5
+    }
+  },
+  "models": {
+    "Logistic Regression": {
+      "cv_roc_auc_mean": 0.846,
+      "cv_roc_auc_std": 0.013,
+      "test_roc_auc": 0.842,
+      "test_pr_auc": 0.635
+    },
+    "Gradient Boosting": {
+      "cv_roc_auc_mean": 0.845,
+      "cv_roc_auc_std": 0.009,
+      "test_roc_auc": 0.839,
+      "test_pr_auc": 0.652
+    }
+  },
+  "chosen_model": "Logistic Regression",
+  "business_assumptions": {
+    "offer_cost": 100,
+    "offer_success": 0.3,
+    "value_months": 12
+  },
+  "threshold": {
+    "chosen": 0.49,
+    "net_value_at_chosen": 27781,
+    "net_value_at_0.5": 27308,
+    "net_value_contact_everyone": -42926,
+    "churners_caught": 214,
+    "churners_total": 374,
+    "customers_contacted": 330,
+    "test_customers": 1409
+  },
+  "test_recall_churn": 0.572,
+  "test_precision_churn": 0.648,
+  "top_features": {
+    "tenure": 0.1634,
+    "Contract": 0.0336,
+    "InternetService": 0.0261,
+    "MonthlyCharges": 0.0146,
+    "TotalCharges": 0.0123,
+    "OnlineSecurity": 0.0049,
+    "TechSupport": 0.0043,
+    "PaymentMethod": 0.0032
+  },
+  "logreg_odds_ratios": {
+    "raise_churn": {
+      "cat__PaymentMethod_Electronic check": 1.2,
+      "cat__PaperlessBilling_Yes": 1.44,
+      "cat__InternetService_Fiber optic": 1.62,
+      "num__TotalCharges": 1.63,
+      "cat__Contract_Month-to-month": 1.73
+    },
+    "lower_churn": {
+      "num__tenure": 0.3,
+      "cat__Contract_Two year": 0.45,
+      "cat__InternetService_DSL": 0.54,
+      "num__MonthlyCharges": 0.71,
+      "cat__MultipleLines_No": 0.75
+    }
+  }
+}
